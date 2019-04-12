@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Iframe from "react-iframe";
+import "../styles/PopcornAPI.css";
 
 class PopcornAPI extends Component {
   constructor(props) {
@@ -28,9 +29,22 @@ class PopcornAPI extends Component {
     const { data } = this.state;
     return (
       <React.Fragment>
-        <h1 className="text-success">Popcorn API Service</h1>
-        <div>
-          {data.length? data.map(data => <img src={data.images.banner} />) : null}
+        <div className="container-fluid">
+          <div className="row">
+            {data.length
+              ? data.map(data => (
+                  <div className="col-sm" key={data._id}>
+                    <div className="movie-wrap">
+                      <img
+                        className="movie-images"
+                        src={data.images.banner}
+                      />
+                      <h6 className="movie-title text-center text-uppercase">{data.title}</h6>
+                    </div>
+                  </div>
+                ))
+              : null}
+          </div>
         </div>
       </React.Fragment>
     );

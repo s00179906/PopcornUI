@@ -1,0 +1,29 @@
+.movie-images {
+  width: 220px;
+  transition: all 0.2s;
+}
+
+.movie-images:hover {
+  opacity: 0.5;
+}
+
+.movie-wrap:hover .movie-title {
+  visibility: visible;
+  opacity: 1;
+}
+
+.movie-title {
+  visibility: hidden;
+  width: 200px;
+  transition: all 0.1s;
+  color: mintcream;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+}
+
+.container-fluid{
+    margin: 0;
+    padding: 0;
+}
