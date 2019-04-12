@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Test from './components/test'
+import PopcornAPI from './service/PopcornAPI'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Test/>
+        <PopcornAPI/>
       </div>
     );
   }
