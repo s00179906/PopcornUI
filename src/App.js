@@ -1,14 +1,19 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import PopcornAPI from './service/PopcornAPI'
+import React, { Component } from "react";
+import "./App.css";
+import PopcornAPI from "./service/PopcornAPI";
+import { BrowserRouter, Route } from "react-router-dom";
+
+import Movie from "./components/Movie";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <PopcornAPI/>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+        <Route path="/" exact render={() => <PopcornAPI />}/>
+        <Route path="/movie" exact render={() => <Movie />}/>
+        </div>
+      </BrowserRouter>
     );
   }
 }
