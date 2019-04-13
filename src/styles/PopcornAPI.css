@@ -4,7 +4,7 @@
 }
 
 .movie-images:hover {
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 .movie-wrap:hover .movie-title {
@@ -21,9 +21,5 @@
   position: absolute;
   top: 50%;
   bottom: 50%;
-}
-
-.container-fluid{
-    margin: 0;
-    padding: 0;
+  font-size: 1.25em;
 }
