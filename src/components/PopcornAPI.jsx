@@ -14,32 +14,53 @@ class PopcornAPI extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get("https://tv-v2.api-fetch.website/movies/1")
-      .then(res => {
-        console.log(res);
-        this.setState({ data: res.data });
-      })
-      .catch(error => {
-        console.log(error);
+    let urlArray = [
+      "https://tv-v2.api-fetch.website/movies/1",
+      "https://tv-v2.api-fetch.website/movies/2",
+      "https://tv-v2.api-fetch.website/movies/3",
+      "https://tv-v2.api-fetch.website/movies/4",
+      "https://tv-v2.api-fetch.website/movies/5",
+      "https://tv-v2.api-fetch.website/movies/6",
+      "https://tv-v2.api-fetch.website/movies/7",
+      "https://tv-v2.api-fetch.website/movies/8",
+      "https://tv-v2.api-fetch.website/movies/9",
+      "https://tv-v2.api-fetch.website/movies/10",
+      "https://tv-v2.api-fetch.website/movies/11",
+      "https://tv-v2.api-fetch.website/movies/12"
+    ];
+
+    let promiseArray = urlArray.map(url => axios.get(url));
+    axios.all(promiseArray).then(res => {
+      var moviesDataArray = [];
+      for (let index = 0; index < res.length; index++) {
+        let temp = res[index].data;
+        for (let s = 0; s < temp.length; s++) {
+          moviesDataArray.push(res[index].data[s]);
+        }
+      }
+      this.setState({
+        data: moviesDataArray
       });
+    });
+
   }
 
   handleClick = (e, data) => {
     const movieImdbID = data.imdb_id;
-    localStorage.setItem('movieImdbID', movieImdbID)
+    localStorage.setItem("movieImdbID", movieImdbID);
   };
 
   render() {
     const { data } = this.state;
+
     return (
       <React.Fragment>
-        <div className="container-fluid">
+        <div className="container-fluid ml-2">
           <div className="row">
             {data.length
               ? data.map(data => (
                   <div
-                    className="col-sm p-0 my-2"
+                    className="col-md col-sm-6 col-xs-6 p-0 my-2"
                     key={data._id}
                     onClick={e => this.handleClick(e, data)}
                   >
