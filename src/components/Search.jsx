@@ -23,13 +23,8 @@ class Search extends Component {
 
   searchMovies = () => {
     const { searchTerm } = this.state;
-    if (searchTerm != "") {
-      console.log("Search Term:", searchTerm);
-      axios(
-        // `https://api.odb.to/search?q=${searchTerm}&api_key=${this.state.apiKey}`
-        // `https://api.odb.to/alphabet?letter=${searchTerm}&api_key=${apiKey}`
-        `http://www.omdbapi.com/?apikey=281cb509&s=${searchTerm}`
-      )
+    if (searchTerm !== "") {
+      axios(`https://www.omdbapi.com/?apikey=281cb509&s=${searchTerm}`)
         .then(res => {
           const data = res.data.Search;
           this.setState({
@@ -37,12 +32,6 @@ class Search extends Component {
           });
           console.log(this.state.searchedMovieData);
 
-          localStorage.setItem(
-            "movieImdbID",
-            this.state.searchedMovieData.imdbID
-          );
-          const id = localStorage.getItem();
-          console.log(id);
         })
         .catch(error => {
           console.log("Error fetching data", error);
@@ -59,43 +48,38 @@ class Search extends Component {
     const { searchedMovieData } = this.state;
     return (
       <React.Fragment>
-        <div>
-          <h1 className="text-center text-info">
-            Search for a movie. TV-Shows coming soon!
-          </h1>
-          <div className="search-container">
-            <input
-              type="text"
-              className="search-bar"
-              placeholder="Search for a movie"
-              value={this.state.searchTerm}
-              onChange={this.handleChange}
-            />
-            <button
-              type="button"
-              onClick={this.searchMovies}
-              class="btn btn-outline-warning m-4"
-            >
-              Search
-            </button>
-          </div>
+        <div className="search-container">
+          <input
+            type="text"
+            className="search-bar"
+            placeholder="Search for a movie"
+            value={this.state.searchTerm}
+            onChange={this.handleChange}
+          />
+          <button
+            type="button"
+            onClick={this.searchMovies}
+            className="btn btn-outline-warning m-4"
+          >
+            Search
+          </button>
         </div>
 
         <div className="container-fluid ml-2">
           <div className="row">
-            {searchedMovieData.length
+            {searchedMovieData
               ? searchedMovieData.map(data => (
                   <div className="col-md col-sm-6 col-xs-6 p-0 my-2">
                     <Link to="/movie" key={data.imdbID}>
-                      <div class="movie-wrap my-4">
+                      <div className="search-movie-wrap my-4">
                         <img
-                          className="movie-images"
+                          className="search-movie-image"
                           key={data.Title}
                           src={data.Poster}
                           alt="movie"
                           onClick={e => this.handleClick(e, data)}
                         />
-                        <h6 className="movie-title" key={data.imdbID}>
+                        <h6 className="search-movie-title" key={data.imdbID}>
                           {data.Title}
                         </h6>
                       </div>

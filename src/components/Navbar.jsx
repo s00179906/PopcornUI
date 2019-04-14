@@ -1,45 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import axios from 'axios'
+import '../styles/Navbar.css'
 
 class Navbar extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     searchTerm: "",
-  //     clicked: false,
-  //     apiKey: 'e9754a45dd90648ec3f03ea6bf39b8e1'
-  //   };
-  // }
-
-  // handleClick = event => {
-  //   this.setState({
-  //     searchTerm: event.target.value,
-  //     clicked: false
-  //   });
-  // };
-
-  // method = event => {
-  //   event.preventDefault();
-  //   const { searchTerm, clicked } = this.state;
-  //   localStorage.setItem("searchTerm", searchTerm);
-  //   localStorage.setItem("clicked", clicked);
-  //   console.log(clicked, searchTerm);
-
-  //   axios(
-  //     `https://api.odb.to/search?q=${searchTerm}&api_key=${this.state.apiKey}`
-  //   )
-  //     .then(res => {
-  //       console.log(res);
-  //       // this.setState({
-  //       //   searchedMovieData: res.data,
-  //       // });
-  //     })
-  //     .catch(error => {
-  //       console.log("Error fetching data", error);
-  //     });
-  // };
 
   render() {
     return (
@@ -68,23 +31,6 @@ class Navbar extends Component {
                 </Link>
               </li>
             </ul>
-            {/* <form className="form-inline my-2 my-lg-0">
-              <input
-                className="form-control mr-sm-2"
-                type="search"
-                placeholder="Search for movies..."
-                aria-label="Search"
-                value={this.state.searchTerm}
-                onChange={this.handleClick}
-              />
-              <button
-                className="btn btn-outline-success my-2 my-sm-0"
-                type="submit"
-                onClick={this.method}
-              >
-                Search
-              </button>
-            </form> */}
           </div>
         </nav>
       </React.Fragment>

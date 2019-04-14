@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "../styles/PopcornAPI.css";
 import { Link } from "react-router-dom";
+import "../styles/PopcornAPI.css";
 
 class PopcornAPI extends Component {
   constructor(props) {
@@ -26,7 +26,17 @@ class PopcornAPI extends Component {
       "https://tv-v2.api-fetch.website/movies/9",
       "https://tv-v2.api-fetch.website/movies/10",
       "https://tv-v2.api-fetch.website/movies/11",
-      "https://tv-v2.api-fetch.website/movies/12"
+      "https://tv-v2.api-fetch.website/movies/12",
+      "https://tv-v2.api-fetch.website/movies/13",
+      "https://tv-v2.api-fetch.website/movies/14",
+      "https://tv-v2.api-fetch.website/movies/15",
+      "https://tv-v2.api-fetch.website/movies/16",
+      "https://tv-v2.api-fetch.website/movies/17",
+      "https://tv-v2.api-fetch.website/movies/18",
+      "https://tv-v2.api-fetch.website/movies/19",
+      "https://tv-v2.api-fetch.website/movies/20",
+      "https://tv-v2.api-fetch.website/movies/21",
+      "https://tv-v2.api-fetch.website/movies/22",
     ];
 
     let promiseArray = urlArray.map(url => axios.get(url));
