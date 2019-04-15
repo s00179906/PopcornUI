@@ -4,11 +4,11 @@ body {
 
 .movie-fanart {
   width: 100%;
-  height: 100%;
+  height: 120%;
   filter: blur(8px);
   -webkit-filter: blur(8px);
   opacity: 0.35;
-  position: absolute;
+  position: fixed;
   top: -0%;
   left: 0%;
   z-index: -999;
