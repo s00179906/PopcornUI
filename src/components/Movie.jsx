@@ -18,7 +18,6 @@ class Movie extends Component {
     axios
       .get(`https://tv-v2.api-fetch.website/movie/${movieImdbData}`)
       .then(res => {
-        console.log(res);
         this.setState({ movie: res.data });
         this.setState({ movieImages: res.data.images });
       })
@@ -35,8 +34,6 @@ class Movie extends Component {
     const imdbID = this.state.movie.imdb_id;
     const movieYear = this.state.movie.year;
     const movieEmbededURL = `https://api.odb.to/embed?imdb_id=${imdbID}&title=${movieName}&year=${movieYear}`;
-    console.log(movieEmbededURL);
-    console.log("movie details > ", movieYear, movieName, imdbID);
 
     return (
       <React.Fragment>
@@ -81,9 +78,10 @@ class Movie extends Component {
           </div>
         </div>
         <div />
-        
-        <iframe
+
+        {/* <iframe
           id="odbIframe"
+          title="movie-title"
           src={movieEmbededURL}
           width="650"
           height="400"
@@ -92,8 +90,32 @@ class Movie extends Component {
           scrolling="no"
           frameborder="0"
         />
+        <iframe
+          src="https://videospider.stream/getvideo?key=HWN3pfMVyjKxEe3c&video_id=tt0944947&tv=1&s=1&e=1&ticket=bhxp1kgl4oggeb5zxgs6aqzcsb0jhy"
+          width="600"
+          height="400"
+          frameborder="0"
+          allowfullscreen="true"
+          scrolling="no"
+        />
+        <iframe
+          src="https://videospider.stream/getvideo?key=HWN3pfMVyjKxEe3c&video_id=tt0944947&tv=1&s=1&e=2&ticket=bhxp1kgl4oggeb5zxgs6aqzcsb0jhy"
+          width="600"
+          height="400"
+          frameborder="0"
+          allowfullscreen="true"
+          scrolling="no"
+        />
+        <iframe
+          src="https://videospider.stream/getvideo?key=HWN3pfMVyjKxEe3c&video_id=tt0944947&tv=1&s=1&e=3&ticket=bhxp1kgl4oggeb5zxgs6aqzcsb0jhy"
+          width="600"
+          height="400"
+          frameborder="0"
+          allowfullscreen="true"
+          scrolling="no"
+        /> */}
 
-        <Link to="/search">
+        <Link to="/">
           <button type="button" className="btn btn-outline-warning m-4">
             Go Back
           </button>

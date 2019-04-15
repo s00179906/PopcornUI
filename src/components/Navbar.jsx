@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import '../styles/Navbar.css'
 
 class Navbar extends Component {
-
   render() {
     return (
       <React.Fragment>
@@ -27,7 +25,12 @@ class Navbar extends Component {
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
               <li className="nav-item active">
                 <Link className="nav-link" to="/search">
-                  Search for a Movie
+                  Search for Movies
+                </Link>
+              </li>
+              <li className="nav-item active">
+                <Link className="nav-link" to="/tvshows">
+                  TV Shows
                 </Link>
               </li>
             </ul>
