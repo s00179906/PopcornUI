@@ -24,13 +24,13 @@ class Navbar extends Component {
 
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
               <li className="nav-item active">
-                <Link className="nav-link" to="/search">
-                  Search for Movies
+                <Link className="nav-link" to="/tvshows">
+                  TV Shows
                 </Link>
               </li>
               <li className="nav-item active">
-                <Link className="nav-link" to="/tvshows">
-                  TV Shows
+                <Link className="nav-link" to="/search">
+                  Search for Movies
                 </Link>
               </li>
             </ul>
