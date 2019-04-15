@@ -1,15 +1,16 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import "../styles/Search.css";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import '../styles/Search.css';
+import { MDBInput, MDBBtn, MDBIcon, MDBCol, MDBFormInline } from 'mdbreact';
 
 class Search extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      apiKey: "e9754a45dd90648ec3f03ea6bf39b8e1",
-      searchTerm: "",
+      apiKey: 'e9754a45dd90648ec3f03ea6bf39b8e1',
+      searchTerm: '',
       searchedMovieData: []
     };
   }
@@ -23,7 +24,7 @@ class Search extends Component {
 
   searchMovies = () => {
     const { searchTerm } = this.state;
-    if (searchTerm !== "") {
+    if (searchTerm !== '') {
       axios(`https://www.omdbapi.com/?apikey=281cb509&s=${searchTerm}`)
         .then(res => {
           const data = res.data.Search;
@@ -33,52 +34,58 @@ class Search extends Component {
           console.log(this.state.searchedMovieData);
         })
         .catch(error => {
-          console.log("Error fetching data", error);
+          console.log('Error fetching data', error);
         });
     }
   };
 
   handleClick = (e, data) => {
     const movieImdbID = data.imdbID;
-    localStorage.setItem("movieImdbID", movieImdbID);
+    localStorage.setItem('movieImdbID', movieImdbID);
   };
 
   render() {
     const { searchedMovieData } = this.state;
     return (
       <React.Fragment>
-        <div className="search-container">
-          <input
-            type="text"
-            className="search-bar"
-            placeholder="Search for a movie"
-            value={this.state.searchTerm}
-            onChange={this.handleChange}
-          />
-          <button
-            type="button"
-            onClick={this.searchMovies}
-            className="btn btn-outline-warning m-4"
-          >
-            Search
-          </button>
+        <div className='container'>
+          <div className='form-group mt-4'>
+            <h1 className='text-white text-center font-weight-bold'>
+              Find a movie or TV show
+            </h1>
+            <MDBInput
+              label='Search'
+              outline
+              size='lg'
+              color='text-white'
+              value={this.state.searchTerm}
+              onChange={this.handleChange}
+            />
+            <MDBBtn
+              className='btn btn-block'
+              type='button'
+              color='info'
+              onClick={this.searchMovies}>
+              <MDBIcon icon='search' className='mr-1' /> Search
+            </MDBBtn>
+          </div>
         </div>
 
-        <div className="container-fluid ml-2">
-          <div className="row">
+        <div className='container-fluid ml-2'>
+          <div className='row'>
             {searchedMovieData
               ? searchedMovieData.map(data => (
-                  <div className="col-md col-sm-6 col-xs-6 p-0 my-2">
-                    <Link to="/movie" key={data.imdbID}>
-                      <div className="search-movie-wrap my-4">
+                  <div className='col-md col-sm-6 col-xs-6 p-0 my-2'>
+                    <Link to='/movie' key={data.imdbID}>
+                      <div className='search-movie-wrap my-4'>
                         <img
-                          className="search-movie-image"
+                          className='search-movie-image'
                           key={data.Title}
                           src={data.Poster}
-                          alt="movie"
+                          alt='movie'
                           onClick={e => this.handleClick(e, data)}
                         />
-                        <h6 className="search-movie-title" key={data.imdbID}>
+                        <h6 className='search-movie-title' key={data.imdbID}>
                           {data.Title}
                         </h6>
                       </div>

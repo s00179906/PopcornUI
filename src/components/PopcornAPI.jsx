@@ -10,12 +10,13 @@ class PopcornAPI extends Component {
 
     this.state = {
       data: [],
-      movieID: ''
+      movieID: '',
+      showSpinner: true
     };
   }
 
   componentDidMount() {
-    let urlArray = [
+    const urlArray = [
       'https://tv-v2.api-fetch.website/movies/1',
       'https://tv-v2.api-fetch.website/movies/2',
       'https://tv-v2.api-fetch.website/movies/3',
@@ -48,7 +49,9 @@ class PopcornAPI extends Component {
         for (let s = 0; s < temp.length; s++) {
           moviesDataArray.push(res[index].data[s]);
         }
+        this.setState({ showSpinner: false });
       }
+
       this.setState({
         data: moviesDataArray
       });
@@ -61,11 +64,20 @@ class PopcornAPI extends Component {
   };
 
   render() {
-    const { data } = this.state;
+    const { data, showSpinner } = this.state;
 
     return (
       <React.Fragment>
-        <div className='container-fluid ml-2'>
+        <div className='container-fluid mx-2'>
+          <div className='d-flex justify-content-center my-4'>
+            <div
+              className='spinner-border text-info'
+              role='status'
+              style={{ display: showSpinner ? 'block' : 'none' }}>
+              <span className='sr-only'>Loading...</span>
+            </div>
+          </div>
+
           <div className='row'>
             {data.length
               ? data.map(data => (
