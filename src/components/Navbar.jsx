@@ -1,15 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-// import {
-//   MDBNavbar,
-//   MDBNavbarBrand,
-//   NavbarNav,
-//   MDBNavItem,
-//   MDBNavLink,
-//   MDBNavbarToggler,
-//   MDBCollapse,
-//   MDBContainer
-// } from 'mdbreact';
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -18,7 +7,6 @@ import {
   MDBNavLink,
   MDBNavbarToggler,
   MDBCollapse,
-  MDBFormInline,
   MDBDropdown,
   MDBDropdownToggle,
   MDBDropdownMenu,
