@@ -39,43 +39,6 @@ class Navbar extends Component {
     return (
       <React.Fragment>
         {
-          // <MDBNavbar color='indigo' dark expand='md'>
-          //   <MDBNavbarBrand>
-          //     <strong className='white-text'>lul</strong>
-          //   </MDBNavbarBrand>
-          //   <MDBNavbarToggler onClick={this.toggleCollapse} />
-          //   <MDBCollapse id='navbarCollapse3' isOpen={this.state.isOpen} navbar>
-          //     <MDBNavbarNav left>
-          //       {/* <MDBNavItem active>
-          //         <Link to='#!'>Home</Link>
-          //       </MDBNavItem>
-          //       <MDBNavItem>
-          //         <Link to='/tvshows' />
-          //       </MDBNavItem>
-          //       <MDBNavItem>
-          //         <Link to='#!'>Pricing</Link>
-          //       </MDBNavItem> */}
-          //       <MDBNavItem>
-          //         <MDBDropdown>
-          //           <MDBDropdownToggle nav caret>
-          //             <span className='mr-2'>More</span>
-          //           </MDBDropdownToggle>
-          //           <MDBDropdownMenu>
-          //             <MDBDropdownItem>
-          //               <Link to='/'>Movies</Link>
-          //             </MDBDropdownItem>
-          //             <MDBDropdownItem>
-          //               <Link to='/tvshows'>TV Shows</Link>
-          //             </MDBDropdownItem>
-          //             <MDBDropdownItem>
-          //               <Link to='/search'>Search</Link>
-          //             </MDBDropdownItem>
-          //           </MDBDropdownMenu>
-          //         </MDBDropdown>
-          //       </MDBNavItem>
-          //     </MDBNavbarNav>
-          //   </MDBCollapse>
-          // </MDBNavbar>
           <MDBNavbar color='default-color' dark expand='md'>
             <MDBNavbarBrand>
               <strong className='white-text'>lul</strong>
