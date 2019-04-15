@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
 const divStyle = {
-  color: "white"
+  color: 'white'
 };
 
 class TVShowInfo extends Component {
@@ -10,8 +10,8 @@ class TVShowInfo extends Component {
     super(props);
 
     this.state = {
-      tvShowIMDB: localStorage.getItem("tvShowsIMDB"),
-      apiKey: "e9754a45dd90648ec3f03ea6bf39b8e1",
+      tvShowIMDB: localStorage.getItem('tvShowsIMDB'),
+      apiKey: 'e9754a45dd90648ec3f03ea6bf39b8e1',
       tvShowData: [],
       tvShowStream: []
     };
@@ -40,7 +40,7 @@ class TVShowInfo extends Component {
 
   render() {
     const { tvShowData, tvShowStream } = this.state;
-    console.log(tvShowData);
+    console.log(`${tvShowData[0]}`, tvShowData);
     console.log(tvShowStream);
     return (
       <React.Fragment>
@@ -58,11 +58,10 @@ class TVShowInfo extends Component {
                             streams.openload != null
                               ? streams.openload.url
                               : null
-                          }
-                        >
+                          }>
                           {streams.openload != null
                             ? `Episode ${streams.openload.Episode}`
-                            : "Openload stream link not found"}
+                            : 'Openload stream link not found'}
                         </a>
                         {/* <a href={streams.streamango.url}>
                           {streams.streamango != null

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import '../styles/PopcornAPI.css';
+// import '../styles/PopcornAPI.css';
+import '../styles/Global.css';
 
 class PopcornAPI extends Component {
   constructor(props) {
@@ -85,17 +86,17 @@ class PopcornAPI extends Component {
                     key={data._id}
                     onClick={e => this.handleClick(e, data)}>
                     <Link to='/movie'>
-                      <div className='movie-wrap my-2 item'>
+                      <div className='item-wrap my-2 item'>
                         <img
-                          className='movie-images'
+                          className='item-images'
                           src={data.images.banner}
                           alt='movie'
                         />
                         <div className='text-bg' />
-                        <h6 className='movie-title text-center text-uppercase'>
+                        <h6 className='item-title text-center text-uppercase'>
                           {data.title}
                         </h6>
-                        <div className='item-overlay top' />
+                        {/* <div className='item-overlay top' /> */}
                       </div>
                     </Link>
                   </div>
