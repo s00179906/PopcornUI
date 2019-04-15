@@ -27,14 +27,14 @@ class Navbar extends Component {
     return (
       <React.Fragment>
         {
-          <MDBNavbar color='default-color' dark expand='md'>
+          <MDBNavbar color='transparent' dark expand='md'>
             <MDBNavbarBrand>
               <strong className='white-text'>lul</strong>
             </MDBNavbarBrand>
             <MDBNavbarToggler onClick={this.toggleCollapse} />
             <MDBCollapse id='navbarCollapse3' isOpen={this.state.isOpen} navbar>
               <MDBNavbarNav left>
-                <MDBNavItem active>
+                <MDBNavItem>
                   <MDBNavLink to='/'>Movies</MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
