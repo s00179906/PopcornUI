@@ -31,7 +31,6 @@ class Search extends Component {
             searchedMovieData: data
           });
           console.log(this.state.searchedMovieData);
-
         })
         .catch(error => {
           console.log("Error fetching data", error);

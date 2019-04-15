@@ -36,7 +36,7 @@ class PopcornAPI extends Component {
       "https://tv-v2.api-fetch.website/movies/19",
       "https://tv-v2.api-fetch.website/movies/20",
       "https://tv-v2.api-fetch.website/movies/21",
-      "https://tv-v2.api-fetch.website/movies/22",
+      "https://tv-v2.api-fetch.website/movies/22"
     ];
 
     let promiseArray = urlArray.map(url => axios.get(url));
@@ -52,7 +52,6 @@ class PopcornAPI extends Component {
         data: moviesDataArray
       });
     });
-
   }
 
   handleClick = (e, data) => {
