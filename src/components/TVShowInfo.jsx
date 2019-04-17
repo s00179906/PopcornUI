@@ -19,6 +19,8 @@ class TVShowInfo extends Component {
 
   componentDidMount() {
     const { tvShowIMDB, apiKey } = this.state;
+
+    //Gets TMDB ID and searches for Movies
     axios
       .get(
         `https://api.odb.to/identity?imdb_id=${tvShowIMDB}&api_key=${apiKey}`
@@ -36,20 +38,34 @@ class TVShowInfo extends Component {
       .catch(error => {
         console.log(error);
       });
+
+    //Gets TMDB ID and searches for TV Shows
+    axios
+      .get(
+        `https://api.odb.to/identity?imdb_id=${tvShowIMDB}&api_key=${apiKey}`
+      )
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
     const { tvShowData, tvShowStream } = this.state;
-    console.log(`${tvShowData[0]}`, tvShowData);
-    console.log(tvShowStream);
+    console.log('full tv data > ', tvShowData);
+    console.log('streaming links > ', tvShowStream);
     return (
       <React.Fragment>
         <div style={divStyle}>
           {tvShowData.length ? (
             tvShowData.map(tvShows => (
               <div key={tvShows.id}>
+                <img src={tvShows.imdb_poster_url} alt='' />
+                <img src={tvShows.source_poster_url} alt='' />
+                <img src={tvShows.source_cover_url} alt='' />
                 <h1>{tvShows.title}</h1>
-
                 {tvShowStream.length
                   ? tvShowStream.map(streams => (
                       <div>
@@ -71,7 +87,6 @@ class TVShowInfo extends Component {
                       </div>
                     ))
                   : null}
-
                 {/* <a href={tvShows.streamData[0].openload.url}>
                   Episode: {tvShows.streamData[0].openload.Episode}
                 </a> */}

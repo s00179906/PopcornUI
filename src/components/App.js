@@ -8,13 +8,15 @@ import Navbar from './Navbar';
 import GetTVShows from './GetTVShows';
 import TVShowInfo from './TVShowInfo';
 
+import ScrollUpButton from 'react-scroll-up-button';
+
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className='App'>
           <Navbar />
-          {/* <Route render={() => <Navbar />} /> */}
+          <ScrollUpButton />
           <Route path='/' exact render={() => <PopcornAPI />} />
           <Route path='/tvshows' render={() => <GetTVShows />} />
           <Route path='/tvshowsinfo' render={() => <TVShowInfo />} />
