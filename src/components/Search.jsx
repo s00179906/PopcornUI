@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../styles/Search.css';
-import { MDBInput, MDBBtn, MDBIcon, MDBCol, MDBFormInline } from 'mdbreact';
+import '../styles/Global.css';
+import { MDBInput, MDBBtn, MDBIcon } from 'mdbreact';
 
 class Search extends Component {
   constructor(props) {
     super(props);
-
+    localStorage.setItem('movieImdbID', '');
+    localStorage.setItem('tvShowsIMDB', '');
+    localStorage.setItem('type', '');
     this.state = {
       apiKey: 'e9754a45dd90648ec3f03ea6bf39b8e1',
       searchTerm: '',
@@ -42,13 +45,21 @@ class Search extends Component {
   handleClick = (e, data) => {
     const movieImdbID = data.imdbID;
     localStorage.setItem('movieImdbID', movieImdbID);
+
+    const tvIMDB = data.Type === 'series' ? data.imdbID : '';
+    localStorage.setItem('tvShowsIMDB', tvIMDB);
+
+    // const whatIsIt = data.Type === 'movie' ? 'movie' : 'tvshow';
+    // localStorage.setItem('type', whatIsIt);
+    // console.log('What is it: ', whatIsIt);
   };
 
   render() {
     const { searchedMovieData } = this.state;
+
     return (
       <React.Fragment>
-        <div className='container'>
+        <div className='container item-container'>
           <div className='form-group mt-4'>
             <h1 className='text-white text-center font-weight-bold'>
               Find a movie or TV show
@@ -76,16 +87,18 @@ class Search extends Component {
             {searchedMovieData
               ? searchedMovieData.map(data => (
                   <div className='col-md col-sm-6 col-xs-6 p-0 my-2'>
-                    <Link to='/movie' key={data.imdbID}>
-                      <div className='search-movie-wrap my-4'>
+                    <Link
+                      to={data.Type === 'movie' ? '/movie' : '/tvshowsinfo'}
+                      key={data.imdbID}>
+                      <div className='item-wrap my-2 item' item>
                         <img
-                          className='search-movie-image'
+                          className='item-images'
                           key={data.Title}
                           src={data.Poster}
                           alt='movie'
                           onClick={e => this.handleClick(e, data)}
                         />
-                        <h6 className='search-movie-title' key={data.imdbID}>
+                        <h6 className='item-title' key={data.imdbID}>
                           {data.Title}
                         </h6>
                       </div>

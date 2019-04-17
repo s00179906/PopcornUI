@@ -1,21 +1,51 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-// import '../styles/PopcornAPI.css';
 import '../styles/Global.css';
 
 class PopcornAPI extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       data: [],
       movieID: '',
-      showSpinner: true
+      showSpinner: true,
+      counter: 2
+    };
+
+    window.onscroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop ===
+        document.documentElement.offsetHeight
+      ) {
+        this.loadMoreMovies('https://tv-v2.api-fetch.website/movies/');
+      }
     };
   }
 
-  componentDidMount() {
+  loadMoreMovies = url => {
+    const { counter } = this.state;
+    const _url = `${url}+${counter}`;
+    axios.get(_url).then(res => {
+      console.log(res.data);
+      this.setState({
+        data: this.state.data.concat(res.data),
+        counter: counter + 1
+      });
+    });
+  };
+
+  componentWillMount() {
+    // window.scrollTo(0, 0);
+    axios.get('https://tv-v2.api-fetch.website/movies/1').then(res => {
+      console.log(res.data);
+      this.setState({
+        data: res.data,
+        showSpinner: false
+      });
+    });
+
+    /*  original code before testing infinite scroll. dont delete this code
     const urlArray = [
       'https://tv-v2.api-fetch.website/movies/1',
       'https://tv-v2.api-fetch.website/movies/2',
@@ -55,7 +85,7 @@ class PopcornAPI extends Component {
       this.setState({
         data: moviesDataArray
       });
-    });
+    });*/
   }
 
   handleClick = (e, data) => {
@@ -68,8 +98,8 @@ class PopcornAPI extends Component {
 
     return (
       <React.Fragment>
-        <div className='container-fluid mx-2'>
-          <div className='d-flex justify-content-center my-4'>
+        <div className='container-fluid mx-2 item-container'>
+          <div className='d-flex justify-content-center my-2'>
             <div
               className='spinner-border text-info'
               role='status'

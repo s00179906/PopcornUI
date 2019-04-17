@@ -42,3 +42,16 @@
   -webkit-transform: scale(1.15);
   transform: scale(1.15);
 }
+
+.item-container {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
